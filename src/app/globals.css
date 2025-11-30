@@ -6,6 +6,8 @@
   --card: rgba(255, 255, 255, 0.06);
   --accent: #7bd6f7;
   --accent-strong: #fbbf24;
+  --font-geist-sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-geist-mono: "SFMono-Regular", "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 @theme inline {
