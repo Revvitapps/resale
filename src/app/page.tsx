@@ -138,6 +138,7 @@ export default function Home() {
         tone: "cool",
       },
     ];
+    return base;
   }, [filtered.length, soldLines, totals]);
 
   const updateRow = (idx: number, field: keyof SotRow, value: string) => {
