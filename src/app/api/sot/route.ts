@@ -36,8 +36,13 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
     const rows = Array.isArray(body?.rows) ? body.rows : [];
-    const data = rows.map((r: Record<string, string>) => CSV_HEADERS.map((h) => r[h] ?? ""));
-    const csv = [CSV_HEADERS.join(","), ...data.map((row) => row.map((cell) => `"${String(cell).replace(/"/g, '""')}"`).join(","))].join("\n");
+    const data: string[][] = rows.map((r: Record<string, string>) => CSV_HEADERS.map((h) => r[h] ?? ""));
+    const csv = [
+      CSV_HEADERS.join(","),
+      ...data.map((row: string[]) =>
+        row.map((cell: string) => `"${String(cell).replace(/"/g, '""')}"`).join(","),
+      ),
+    ].join("\n");
 
     const blobPath = process.env.SOT_BLOB_PATH || "sot/master.csv";
     const { url } = await put(blobPath, csv, {
