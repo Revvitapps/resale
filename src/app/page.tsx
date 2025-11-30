@@ -178,7 +178,7 @@ export default function Home() {
   const exportCsv = () => {
     const rowsForCsv = rows.map(toCsvRecord);
     const data = rowsForCsv.map((r) => CSV_HEADERS.map((h) => r[h] ?? ""));
-    const csv = Papa.unparse({ fields: CSV_HEADERS, data });
+    const csv = Papa.unparse({ fields: [...CSV_HEADERS], data });
     const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
