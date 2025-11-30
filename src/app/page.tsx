@@ -80,7 +80,7 @@ export default function Home() {
     const sellThrough = filtered.length === 0 ? 0 : soldLines.length / filtered.length;
     const avgTicket = soldLines.length === 0 ? 0 : totals.sold / soldLines.length;
 
-    return [
+    const base: { id: string; label: string; value: string; sub?: string; tone?: "warm" | "cool" | "muted" }[] = [
       {
         id: "profit",
         label: "Realized Profit",
